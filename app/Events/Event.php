@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Events;
+namespace Kleinespende\Events;
 
 abstract class Event
 {

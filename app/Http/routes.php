@@ -27,5 +27,9 @@ Route::get('/', function () {
 */
 
 Route::group(['middleware' => ['web']], function () {
-    //
+    Route::resource('/buttons', ButtonsController::class);
+});
+
+Route::group(['middleware' => ['api']], function () {
+    Route::post('/buttons/{button}/click', 'ButtonsController@click');
 });
