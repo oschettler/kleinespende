@@ -43,7 +43,7 @@ class ButtonsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Button $button
      * @return \Illuminate\Http\Response
      */
     public function edit($button)
@@ -55,12 +55,17 @@ class ButtonsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Button $button
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $button)
     {
-        //
+        if ($button->save($request->all())) {
+            return redirect('button')->with('status', 'Button gespeichert!');
+        }
+        else {
+            return redirect('button.edit')->with('status', 'Fehler');
+        }
     }
 
     /**

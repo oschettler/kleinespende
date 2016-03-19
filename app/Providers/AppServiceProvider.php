@@ -3,6 +3,7 @@
 namespace Kleinespende\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Kleinespende\Http\ViewComposers\ReceiverComposer;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +14,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer(
+            ['buttons.create', 'buttons.edit'], ReceiverComposer::class
+);
     }
 
     /**
