@@ -11,13 +11,13 @@
                     <div class="panel-body">
                             <div class="row">
                                 <div class="col-sm-6 donation-dash">
-                                    <span class="amount">{{ number_format($receiver->open_donations, 2 , ',' , '.') }}</span> €
+                                    <span id="open-donations" class="amount">{{ number_format($receiver->open_donations, 2 , ',' , '.') }}</span> €
                                     <br>Offene Spenden
-                                    <br>Noch {{ number_format($receiver->donation_threshold - $receiver->open_donations, 2 , ',' , '.') }} € bis zur nächsten Spende
+                                    <br>Noch <span id="remaining-amount">{{ number_format($receiver->donation_threshold - $receiver->open_donations, 2 , ',' , '.') }}</span> € bis zur nächsten Spende
                                 </div>
                                 <div class="col-sm-6 donation-dash">
-                                    <span class="amount">{{ number_format($receiver->year_total_donations, 2 , ',' , '.') }}</span> €
-                                    <br>In diesem Jahr schon gespendet
+                                    <span id="month-total-donations" class="amount">{{ number_format($receiver->month_total_donations, 2 , ',' , '.') }}</span> €
+                                    <br>In diesem Monat schon gespendet
                                 </div>
                             </div>
                     </div>
@@ -26,4 +26,20 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+<script src="https://js.pusher.com/3.0/pusher.min.js"></script>
+<script>
+    Pusher.log = function(message) {
+        if (window.console && window.console.log) {
+            window.console.log(message);
+        }
+    };
+    var pusher = new Pusher("{{ env('PUSHER_KEY') }}", {
+        cluster: 'eu',
+        encrypted: true
+    });
+</script>
+<script src="/js/pusher.js"></script>
 @endsection

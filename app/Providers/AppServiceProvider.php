@@ -2,8 +2,11 @@
 
 namespace Kleinespende\Providers;
 
+use Event;
 use Illuminate\Support\ServiceProvider;
 use Kleinespende\Http\ViewComposers\ReceiverComposer;
+use Kleinespende\Models\Receiver;
+use Kleinespende\Events\ReceiverUpdated;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -17,6 +20,9 @@ class AppServiceProvider extends ServiceProvider
         view()->composer(
             ['buttons.create', 'buttons.edit'], ReceiverComposer::class
 );
+        Receiver::updated(function ($receiver) {
+            Event::fire(new ReceiverUpdated($receiver));
+        });
     }
 
     /**
