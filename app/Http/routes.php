@@ -1,4 +1,5 @@
 <?php
+use Kleinespende\Models\Button;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +34,8 @@ Route::group(['middleware' => 'web'], function () {
         return view('welcome');
     });
 
-    Route::resource('/buttons', ButtonsController::class);
+    Route::model('button', Button::class);
+    Route::resource('button', ButtonsController::class);
 
     Route::get('/home', 'HomeController@index');
 });

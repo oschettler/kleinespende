@@ -4,6 +4,7 @@ namespace Kleinespende\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Kleinespende\Http\Requests;
+use Kleinespende\Models\Button;
 
 class ButtonsController extends Controller
 {
@@ -14,7 +15,8 @@ class ButtonsController extends Controller
      */
     public function index()
     {
-        //
+        $buttons = Button::all();
+        return view('buttons.index', ['buttons' => $buttons ]);
     }
 
     /**
@@ -24,7 +26,7 @@ class ButtonsController extends Controller
      */
     public function create()
     {
-        //
+        return view('buttons.edit');
     }
 
     /**
@@ -39,25 +41,14 @@ class ButtonsController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        return view('sss');
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($button)
     {
-        //
+        return view('buttons.edit', ['button' => $button]);
     }
 
     /**
