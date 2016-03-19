@@ -92,7 +92,7 @@ class ButtonsController extends Controller
      */
     public function click(Request $request, $id)
     {
-        error_log("Button {$id}\n", 3, '/tmp/kleinespende.log');
+        error_log(strftime("[%Y-%m-%d %H:%M:%S] Button {$id}\n"), 3, '/tmp/kleinespende.log');
         return response()->json(['status' => 'ok']);
     }
 
