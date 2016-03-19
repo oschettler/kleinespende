@@ -42,7 +42,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Laravel
+                    Kleine Spenden
                 </a>
             </div>
 
@@ -76,7 +76,7 @@
 
     @yield('content')
 
-    <footer class="footer">
+    <footer class="container footer">
         <p>&copy; 2016 Tinkerthon. Olav Schettler</p>
     </footer>
 

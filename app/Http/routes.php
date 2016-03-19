@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -26,16 +22,18 @@ Route::get('/', function () {
 |
 */
 
-Route::group(['middleware' => ['web']], function () {
-    Route::resource('/buttons', ButtonsController::class);
-});
-
 Route::group(['middleware' => ['api']], function () {
     Route::post('/buttons/{button}/click', 'ButtonsController@click');
 });
 
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
+
+    Route::get('/', function () {
+        return view('welcome');
+    });
+
+    Route::resource('/buttons', ButtonsController::class);
 
     Route::get('/home', 'HomeController@index');
 });

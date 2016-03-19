@@ -36,10 +36,15 @@
     rm -rf public/system
     ln -s {{ $root_dir }}/shared/system public/system
 
+    ln -s {{ $root_dir }}/shared/node_modules node_modules
+
     composer install
 
     php artisan cache:clear
     php artisan migrate
+
+    npm install
+    nodejs ./node_modules/gulp/bin/gulp.js
 
     #chmod 777 storage/logs/laravel.log
     #sudo setfacl -R -m u:www-data:rwX -m u:olav:rwX {{ $root_dir }}/shared/storage
