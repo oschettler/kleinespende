@@ -89,7 +89,34 @@ class ButtonsController extends Controller
     public function click(Request $request, $id)
     {
         error_log(strftime("[%Y-%m-%d %H:%M:%S] Button {$id}\n"), 3, '/tmp/kleinespende.log');
-        return response()->json(['status' => 'ok']);
+
+        $button = Button::where('button_id', $id)->with('receiver')->first();
+        if (!$button) {
+            return response('Not found', 404);
+        }
+
+        $receiver = $button->receiver;
+
+        $receiver->open_donations += $button->amount;
+
+        if ($receiver->open_donations >= $receiver->donation_threshold) {
+            $receiver->month_total_donations += $receiver->open_donations;
+            $receiver->month_total_donations =  min(
+                $receiver->month_max_donations,
+                $receiver->month_total_donations
+            );
+            $receiver->open_donations = 0;
+        }
+
+        $receiver->save();
+
+        return response()->json([
+            'time' => strftime('%H:%M:%S'),
+            'status' => 'ok',
+            'amount' => $button->amount,
+            'open_donations' => $receiver->open_donations,
+            'month_total_donations' => $receiver->month_total_donations,
+        ]);
     }
 
 }
