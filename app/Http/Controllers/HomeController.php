@@ -4,6 +4,7 @@ namespace Kleinespende\Http\Controllers;
 
 use Kleinespende\Http\Requests;
 use Illuminate\Http\Request;
+use Kleinespende\Models\Receiver;
 
 class HomeController extends Controller
 {
@@ -24,6 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $receivers = Receiver::all();
+        return view('home', ['receivers' => $receivers]);
     }
 }

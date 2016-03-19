@@ -1,6 +1,6 @@
 <?php
 
-namespace Kleinespende;
+namespace Kleinespende\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

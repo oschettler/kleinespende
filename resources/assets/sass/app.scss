@@ -30,6 +30,7 @@ body {
   padding-top: 19px;
   color: #777;
   border-top: 1px solid #e5e5e5;
+  text-align: center;
 }
 
 /* Customize container */
@@ -77,4 +78,13 @@ body {
   .jumbotron {
     border-bottom: 0;
   }
+}
+
+.donation-dash {
+    text-align: center;
+
+    .amount {
+        font-size: 50pt;
+        font-weight: bold;
+    }
 }
