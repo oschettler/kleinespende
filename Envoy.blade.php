@@ -1,8 +1,8 @@
 @servers(['web' => 'olav.net'])
 
 @setup
-    $repo = 'ssh://gogs@olav.net:8222/olav/magrit-laravel.git';
-    $root_dir = '/var/www/magrit-laravel';
+    $repo = 'ssh://git@github.com:oschettler/kleinespende.git';
+    $root_dir = '/var/www/kleinespende';
     $releases_dir = "{$root_dir}/releases";
     $now = strftime('%Y%m%d-%H%M%S');
     $release_dir = "{$releases_dir}/{$now}";
