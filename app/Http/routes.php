@@ -25,7 +25,7 @@ use Kleinespende\Models\Receiver;
 */
 
 Route::group(['middleware' => ['api']], function () {
-    Route::post('/buttons/{button}/click', 'ButtonsController@click');
+    Route::post('/buttons/{id}/click', 'ButtonsController@click');
 });
 
 Route::group(['middleware' => 'web'], function () {
