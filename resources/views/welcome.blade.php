@@ -1,45 +1,27 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Laravel</title>
+@extends('layouts.app')
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+@section('content')
+    <div class="jumbotron">
+      <h1>Spenden, wenn's gerade passt</h1>
+      <p class="lead">Ein einfacher Knopf ermöglicht Spenden von kleinen Beträgen zu jeder Zeit. Einfach den Knopf einrichten, Spendenbeträge festlegen und anfangen zu spenden.</p>
+      <p><a class="btn btn-lg btn-success" href="#" role="button">Jetzt mitmachen</a></p>
+    </div>
 
-        <style>
-            html, body {
-                height: 100%;
-            }
+    <div class="row marketing">
+      <div class="col-sm-6">
+        <h4>Kleine Beträge</h4>
+        <p>Öfter kleine Beträge spenden fällt leicht. Nutze deine kleinen Momente der Dankbarkeit, um anderen zu helfen.</p>
 
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
+        <h4>Obergrenze</h4>
+        <p>Kein Abo, keine Verpflichtung. Du bestimmst selbst, wann du wieviel spenden möchtest.</p>
+      </div>
 
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
+      <div class="col-sm-6">
+        <h4>Mehre Knöpfe</h4>
+        <p>Richte beliebig viele Knöpfe für verschiedene Empfänger und unterschiedliche Beträge ein.</p>
 
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
-
-            .title {
-                font-size: 96px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">Laravel 5</div>
-            </div>
-        </div>
-    </body>
-</html>
+        <h4>Knöpfe kaufen oder selber basteln</h4>
+        <p>Kleine Spenden funktionieren mit LittleBits CloudBit oder Amazon Dash. Die Software ist kostenlos und Open Source. Bastele doch einfach deinen eigenen Spendenknopf im Internet der Dinge.</p>
+      </div>
+    </div>
+@endsection
