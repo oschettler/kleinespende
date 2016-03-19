@@ -66,6 +66,7 @@
 
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="{{ route('button.index') }}"><i class="fa fa-btn fa-bullseye"></i>Buttons</a></li>
+                                <li><a href="{{ route('receiver.index') }}"><i class="fa fa-btn fa-briefcase"></i>Empfänger</a></li>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                             </ul>
                         </li>

@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
 
-    @if ($button)
+    @if (!empty($button))
         <h1>Button &laquo;{{ $button->name }}&raquo; ändern</h1>
         {!! Form::model($button, ['route' => ['button.update', $button->id], 'method' => 'PUT']) !!}
     @else

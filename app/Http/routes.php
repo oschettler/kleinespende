@@ -1,5 +1,6 @@
 <?php
 use Kleinespende\Models\Button;
+use Kleinespende\Models\Receiver;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,9 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::model('button', Button::class);
     Route::resource('button', ButtonsController::class);
+
+    Route::model('receiver', Receiver::class);
+    Route::resource('receiver', ReceiversController::class);
 
     Route::get('/home', 'HomeController@index');
 });
