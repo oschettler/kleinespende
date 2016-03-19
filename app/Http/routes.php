@@ -33,3 +33,9 @@ Route::group(['middleware' => ['web']], function () {
 Route::group(['middleware' => ['api']], function () {
     Route::post('/buttons/{button}/click', 'ButtonsController@click');
 });
+
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+
+    Route::get('/home', 'HomeController@index');
+});
