@@ -15,7 +15,7 @@ class ButtonsController extends Controller
      */
     public function index()
     {
-        $buttons = Button::all();
+        $buttons = Button::where('user_id', $this->user->id)->get();
         return view('buttons.index', ['buttons' => $buttons ]);
     }
 
@@ -48,6 +48,7 @@ class ButtonsController extends Controller
      */
     public function edit($button)
     {
+        $this->checkAuth($button);
         return view('buttons.edit', ['button' => $button]);
     }
 
@@ -60,6 +61,7 @@ class ButtonsController extends Controller
      */
     public function update(Request $request, $button)
     {
+        $this->checkAuth($button);
         if ($button->save($request->all())) {
             return redirect('button')->with('status', 'Button gespeichert!');
         }
@@ -94,6 +96,7 @@ class ButtonsController extends Controller
         if (!$button) {
             return response('Not found', 404);
         }
+        $this->checkAuth($button);
 
         $receiver = $button->receiver;
 

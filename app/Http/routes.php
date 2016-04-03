@@ -28,13 +28,17 @@ Route::group(['middleware' => ['api']], function () {
     Route::post('/buttons/{id}/click', 'ButtonsController@click');
 });
 
-Route::group(['middleware' => 'web'], function () {
+Route::group(['middleware' => 'web'], function ()
+{
     Route::auth();
 
     Route::get('/', function () {
         return view('welcome');
     });
+});
 
+Route::group(['middleware' => ['web', 'auth']], function ()
+{
     Route::model('button', Button::class);
     Route::resource('button', ButtonsController::class);
 

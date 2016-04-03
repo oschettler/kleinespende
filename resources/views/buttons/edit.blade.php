@@ -15,7 +15,10 @@
         <div class="col-sm-4">
             <div class="form-group">
                 {!! Form::label('Typ') !!}
-                {!! Form::select('type', ['littlebits' => 'LitteBits CloudBit'], null, ['class' => 'form-control']) !!}
+                {!! Form::select('type', [
+                    'abutton' => 'AprilBrother AButton',
+                    'littlebits' => 'LitteBits CloudBit',
+                ], null, ['class' => 'form-control']) !!}
             </div>
         </div>
         <div class="col-sm-8">

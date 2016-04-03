@@ -15,7 +15,7 @@ class ReceiversController extends Controller
      */
     public function index()
     {
-        $receivers = Receiver::all();
+        $receivers = Receiver::where('user_id', $this->user->id)->get();
         return view('receivers.index', ['receivers' => $receivers]);
     }
 
@@ -48,6 +48,7 @@ class ReceiversController extends Controller
      */
     public function edit($receiver)
     {
+        $this->checkAuth($receiver);
         return view('receivers.edit', ['receiver' => $receiver]);
     }
 
@@ -60,12 +61,13 @@ class ReceiversController extends Controller
      */
     public function update(Request $request, $receiver)
     {
-            if ($receiver->save($request->all())) {
-                return redirect('receiver')->with('status', 'Empfänger gespeichert!');
-            }
-            else {
-                return redirect('receiver.edit')->with('status', 'Fehler');
-            }
+        $this->checkAuth($receiver);
+        if ($receiver->save($request->all())) {
+            return redirect('receiver')->with('status', 'Empfänger gespeichert!');
+        }
+        else {
+            return redirect('receiver.edit')->with('status', 'Fehler');
+        }
     }
 
     /**
