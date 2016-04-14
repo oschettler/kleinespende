@@ -96,7 +96,7 @@ class ButtonsController extends Controller
         if (!$button) {
             return response('Not found', 404);
         }
-        $this->checkAuth($button);
+        //$this->checkAuth($button);
 
         $receiver = $button->receiver;
 
