@@ -15,7 +15,7 @@ class Controller extends BaseController
 
     protected $user;
 
-    public function __construct(Authenticatable $user)
+    public function __construct(Authenticatable $user = null)
     {
         $this->user = $user;
     }
